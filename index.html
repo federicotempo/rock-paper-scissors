@@ -9,6 +9,24 @@
     
 </body>
 <script>
-    
+
+    function getComputerChoice() {
+        randomNumber = Math.random();
+        let computerChoice = "";
+        
+        if (randomNumber >= 0.66) {
+            computerChoice = "Scissors";
+        } else if (randomNumber <= 0.33) {
+            computerChoice = "Rock";
+        } else {
+            computerChoice = "Paper";
+        }
+        
+        return computerChoice; 
+    }
+
+    let computerChoice = getComputerChoice();
+    console.log(computerChoice);
+
 </script>
 </html>
