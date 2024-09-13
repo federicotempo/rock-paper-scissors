@@ -15,18 +15,22 @@
         let computerChoice = "";
         
         if (randomNumber >= 0.66) {
-            computerChoice = "Scissors";
+            computerChoice = "scissors";
         } else if (randomNumber <= 0.33) {
-            computerChoice = "Rock";
+            computerChoice = "rock";
         } else {
-            computerChoice = "Paper";
+            computerChoice = "paper";
         }
         
         return computerChoice; 
     }
 
-    let computerChoice = getComputerChoice();
-    console.log(computerChoice);
+    function getHumanChoice() {
+        let humanChoice = prompt("Choose Rock, paper or scissors: ");
+        return humanChoice;
+    }
+
+    
 
 </script>
 </html>
