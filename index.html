@@ -12,8 +12,7 @@
 </body>
 <script>
 
-    let computerScore = 0;
-    let humanScore = 0;
+    
 
     function getComputerChoice() {
         randomNumber = Math.random();
@@ -31,34 +30,47 @@
     }
 
     function getHumanChoice() {
-        let humanChoice = prompt("Choose Rock, paper or scissors: ").toLowerCase();
+        let humanChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
         return humanChoice;
     }
 
-
     function playRound(computerChoice, humanChoice) {
         if (humanChoice === computerChoice) {
-            console.log("It's a tie");
+            const tieMessage = "It's a tie"
+            console.log(tieMessage);
         } else if (
             humanChoice === "rock" && computerChoice === "scissors" ||
             humanChoice === "scissors" && computerChoice === "paper" ||
             humanChoice === "paper" && computerChoice === "rock"
         ) {
-            console.log("You win! :)")
+            const winningMessage = "You win! :)";
+            console.log(winningMessage);
             humanScore++;
         } else {
-            console.log("The computer wins!")
+            const loserMessage = "The computer wins!"
+            console.log(loserMessage);
             computerScore++;
         }
     }
 
-    const computerSelection = getComputerChoice();
-    const humanSelection = getHumanChoice();
+    function playGame() {
+        let computerSelection = "";
+        let humanSelection = "";
 
-    playRound(computerSelection, humanSelection);
+        for (let i=0; i<5; i++) {
+            computerSelection = getComputerChoice();
+            humanSelection = getHumanChoice();
+            playRound(computerSelection, humanSelection);
+        }
 
-   
-
+        return (humanScore > computerScore) ? "You win the game" : "You lost the game";
+        
+    }
+    
+    let computerScore = 0;
+    let humanScore = 0;
+    console.log(playGame());
+    
 </script>
 
 </html>
