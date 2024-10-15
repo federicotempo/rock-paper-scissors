@@ -32,11 +32,6 @@
         return computerChoice;
     }
 
-    function getHumanChoice() {
-        let humanChoice = prompt("Choose rock, paper or scissors: ").toLowerCase();
-        return humanChoice;
-    }
-
     function playRound(computerChoice, humanChoice) {
         if (humanChoice === computerChoice) {
             const tieMessage = "It's a tie"
@@ -46,38 +41,46 @@
             humanChoice === "scissors" && computerChoice === "paper" ||
             humanChoice === "paper" && computerChoice === "rock"
         ) {
-            const winningMessage = "You win! :)";
+            const winningMessage = "You win the round!";
             console.log(winningMessage);
             humanScore++;
         } else {
-            const loserMessage = "The computer wins!"
+            const loserMessage = "The computer wins the round!"
             console.log(loserMessage);
             computerScore++;
         }
     }
 
-    function playGame() {
+    function playGame(humanSelection) {
         let computerSelection = "";
-        let humanSelection = "";
 
-        for (let i=0; i<5; i++) {
-            computerSelection = getComputerChoice();
-            humanSelection = getHumanChoice();
-            playRound(computerSelection, humanSelection);
-        }
+        computerSelection = getComputerChoice();
+    
+        playRound(computerSelection, humanSelection);
 
         return (humanScore > computerScore) ? "You win the game" : "You lost the game";
-        
     }
-    
+
     const rockButton = document.querySelector("#rockButton")
     const paperButton = document.querySelector("#paperButton")
     const scissorsButton = document.querySelector("#scissorsButton")
 
     let computerScore = 0;
     let humanScore = 0;
-    console.log(playGame());
-    
+
+    rockButton.addEventListener("click", () => {
+        console.log(playGame("rock"))
+    })
+
+    paperButton.addEventListener("click", () => {
+        console.log(playGame("paper"))
+
+    })
+
+    scissorsButton.addEventListener("click", () => {
+        console.log(playGame("scissors"))
+    })
+
 </script>
 
 </html>
