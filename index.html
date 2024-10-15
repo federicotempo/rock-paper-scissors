@@ -9,10 +9,13 @@
 
 <body>
 
-</body>
-<script>
+    <button id="rockButton">Rock</button>
+    <button id="paperButton">Paper</button>
+    <button id="scissorsButton">Scissors</button>
 
-    
+</body>
+
+<script>
 
     function getComputerChoice() {
         randomNumber = Math.random();
@@ -67,6 +70,10 @@
         
     }
     
+    const rockButton = document.querySelector("#rockButton")
+    const paperButton = document.querySelector("#paperButton")
+    const scissorsButton = document.querySelector("#scissorsButton")
+
     let computerScore = 0;
     let humanScore = 0;
     console.log(playGame());
