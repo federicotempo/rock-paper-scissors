@@ -39,44 +39,49 @@
     function playRound(computerChoice, humanChoice) {
         if (humanChoice === computerChoice) {
             const tieMessage = "It's a tie"
-            console.log(tieMessage);
+            displayRoundResult(tieMessage);
         } else if (
             humanChoice === "rock" && computerChoice === "scissors" ||
             humanChoice === "scissors" && computerChoice === "paper" ||
             humanChoice === "paper" && computerChoice === "rock"
         ) {
             const winningMessage = "You win the round!";
-            console.log(winningMessage);
+            displayRoundResult(winningMessage);
             humanScore++;
         } else {
             const loserMessage = "The computer wins the round!"
-            console.log(loserMessage);
+            displayRoundResult(loserMessage);
             computerScore++;
         }
     }
 
     function playGame(humanSelection) {
+        cleanResult();
         let computerSelection = "";
-
         computerSelection = getComputerChoice();
     
         playRound(computerSelection, humanSelection);
 
-        (humanScore > computerScore) ? "You win the game" : "You lost the game";
+        displayGameResult((humanScore > computerScore) ? "You win the game" : "You lost the game");
     }
 
-    function displayGameResult (game) {
+    function displayGameResult (message) {
         const results = document.querySelector("#results");
         const gameResult = document.createElement("h2");
-        gameResult.textContent = game;
+        gameResult.textContent = message;
         results.appendChild(gameResult);
     }
 
-    function displayRoundResult (round) {
+    function displayRoundResult (message) {
         const results = document.querySelector("#results");
         const roundResult = document.createElement("h3");
-        roundResult.textContent = round;
+        roundResult.textContent = message;
         results.appendChild(roundResult);
+    }
+
+    function cleanResult () {
+        const results = document.querySelector("#results");
+        results.textContent = "";
     }
 
     const rockButton = document.querySelector("#rock-button")
@@ -87,16 +92,16 @@
     let humanScore = 0;
 
     rockButton.addEventListener("click", () => {
-        console.log(playGame("rock"))
+        playGame("rock")
     })
 
     paperButton.addEventListener("click", () => {
-        console.log(playGame("paper"))
+        playGame("paper")
 
     })
 
     scissorsButton.addEventListener("click", () => {
-        console.log(playGame("scissors"))
+        playGame("scissors")
     })
 
 </script>
