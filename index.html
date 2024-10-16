@@ -9,9 +9,11 @@
 
 <body>
 
-    <button id="rockButton">Rock</button>
-    <button id="paperButton">Paper</button>
-    <button id="scissorsButton">Scissors</button>
+    <button id="rock-button">Rock</button>
+    <button id="paper-button">Paper</button>
+    <button id="scissors-button">Scissors</button>
+
+    <h3 id="">Game result: </h3>
 
 </body>
 
@@ -61,9 +63,9 @@
         return (humanScore > computerScore) ? "You win the game" : "You lost the game";
     }
 
-    const rockButton = document.querySelector("#rockButton")
-    const paperButton = document.querySelector("#paperButton")
-    const scissorsButton = document.querySelector("#scissorsButton")
+    const rockButton = document.querySelector("#rock-button")
+    const paperButton = document.querySelector("#paper-button")
+    const scissorsButton = document.querySelector("#scissors-button")
 
     let computerScore = 0;
     let humanScore = 0;
