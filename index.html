@@ -13,7 +13,7 @@
     <button id="paper-button">Paper</button>
     <button id="scissors-button">Scissors</button>
 
-    <div id="results">
+    <div id="messages">
 
     </div>
 
@@ -39,49 +39,49 @@
     function playRound(computerChoice, humanChoice) {
         if (humanChoice === computerChoice) {
             const tieMessage = "It's a tie"
-            displayRoundResult(tieMessage);
+            displayRoundMessage(tieMessage);
         } else if (
             humanChoice === "rock" && computerChoice === "scissors" ||
             humanChoice === "scissors" && computerChoice === "paper" ||
             humanChoice === "paper" && computerChoice === "rock"
         ) {
             const winningMessage = "You win the round!";
-            displayRoundResult(winningMessage);
+            displayRoundMessage(winningMessage);
             humanScore++;
         } else {
             const loserMessage = "The computer wins the round!"
-            displayRoundResult(loserMessage);
+            displayRoundMessage(loserMessage);
             computerScore++;
         }
     }
 
     function playGame(humanSelection) {
-        cleanResult();
+        cleanMessages();
         let computerSelection = "";
         computerSelection = getComputerChoice();
     
         playRound(computerSelection, humanSelection);
 
-        displayGameResult((humanScore > computerScore) ? "You win the game" : "You lost the game");
+        displayGameMessage((humanScore > computerScore) ? "You win the game" : "You lost the game");
     }
 
-    function displayGameResult (message) {
-        const results = document.querySelector("#results");
-        const gameResult = document.createElement("h2");
-        gameResult.textContent = message;
-        results.appendChild(gameResult);
+    function displayGameMessage (message) {
+        const messages = document.querySelector("#messages");
+        const gameMessage = document.createElement("h2");
+        gameMessage.textContent = message;
+        messages.appendChild(gameMessage);
     }
 
-    function displayRoundResult (message) {
-        const results = document.querySelector("#results");
-        const roundResult = document.createElement("h3");
-        roundResult.textContent = message;
-        results.appendChild(roundResult);
+    function displayRoundMessage (message) {
+        const messages = document.querySelector("#messages");
+        const roundMessages = document.createElement("h3");
+        roundMessages.textContent = message;
+        messages.appendChild(roundMessages);
     }
 
-    function cleanResult () {
-        const results = document.querySelector("#results");
-        results.textContent = "";
+    function cleanMessages () {
+        const messages = document.querySelector("#messages");
+        messages.textContent = "";
     }
 
     const rockButton = document.querySelector("#rock-button")
