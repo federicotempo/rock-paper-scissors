@@ -62,18 +62,21 @@
     
         playRound(computerSelection, humanSelection);
 
-        return (humanScore > computerScore) ? "You win the game" : "You lost the game";
+        (humanScore > computerScore) ? "You win the game" : "You lost the game";
     }
 
-    function displayResults (round, game) {
+    function displayGameResult (game) {
+        const results = document.querySelector("#results");
+        const gameResult = document.createElement("h2");
+        gameResult.textContent = game;
+        results.appendChild(gameResult);
+    }
+
+    function displayRoundResult (round) {
         const results = document.querySelector("#results");
         const roundResult = document.createElement("h3");
-        const gameResult = document.createElement("h2");
         roundResult.textContent = round;
-        gameResult.textContent = game;
         results.appendChild(roundResult);
-        results.appendChild(gameResult);
-
     }
 
     const rockButton = document.querySelector("#rock-button")
