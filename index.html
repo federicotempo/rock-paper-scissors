@@ -70,15 +70,26 @@
         computerSelection = getComputerChoice();
         playRound(computerSelection, humanSelection);
         displayScore(humanScore, computerScore);
-
-        // displayGameMessage((humanScore > computerScore) ? "You win the game" : "You lost the game");
+        let winner = checkWinner(humanScore, computerScore);
+        if (winner) {
+            announceWinner(winner);
+        }
     }
 
-    function displayGameMessage(message) {
-        const messages = document.querySelector("#game");
-        const gameMessage = document.createElement("h2");
-        gameMessage.textContent = message;
-        messages.appendChild(gameMessage);
+    function announceWinner(winner) {
+        const message = document.querySelector("#game");
+        const winningMessage = document.createElement("h2");
+        winningMessage.innerText = winner;
+        message.appendChild(winningMessage);
+    }
+
+    function checkWinner(humanScore, computerScore) {
+
+        if (humanScore === 5) {
+            return "HUMAN WINS!";
+        } else if (computerScore === 5) {
+            return "COMPUTER WINS!";
+        }
     }
 
     function displayRoundMessage(message) {
