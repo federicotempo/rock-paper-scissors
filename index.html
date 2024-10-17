@@ -9,9 +9,9 @@
 
 <body>
 
-    <button id="rock-button">Rock</button>
-    <button id="paper-button">Paper</button>
-    <button id="scissors-button">Scissors</button>
+    <button id="rock-button" selection="rock">Rock</button>
+    <button id="paper-button" selection="paper">Paper</button>
+    <button id="scissors-button" selection="scissors">Scissors</button>
 
     <div id="round">
 
@@ -73,8 +73,8 @@
         let winner = checkWinner(humanScore, computerScore);
         if (winner) {
             announceWinner(winner);
-            setTimeout(() => {location.reload()}, 3000);
-            console.log("hhla")
+            deleteButtons();
+            setTimeout(() => { location.reload() }, 3000);
         }
     }
 
@@ -121,6 +121,21 @@
         score.textContent = "";
     }
 
+    function selectHumanSelection(humanSelection) {
+        playGame(humanSelection);
+    }
+
+    function handler() {
+        let selection = this.getAttribute("selection");
+        selectHumanSelection(selection);
+    }
+
+    function deleteButtons() {
+        buttons.forEach(button => {
+            button.removeEventListener("click", handler);
+        })
+    }
+
     const rockButton = document.querySelector("#rock-button");
     const paperButton = document.querySelector("#paper-button");
     const scissorsButton = document.querySelector("#scissors-button");
@@ -128,16 +143,10 @@
     let computerScore = 0;
     let humanScore = 0;
 
-    rockButton.addEventListener("click", () => {
-        playGame("rock");
-    })
+    let buttons = document.querySelectorAll("button");
 
-    paperButton.addEventListener("click", () => {
-        playGame("paper");
-    })
-
-    scissorsButton.addEventListener("click", () => {
-        playGame("scissors");
+    buttons.forEach(button => {
+        button.addEventListener("click", handler);
     })
 
 </script>
