@@ -13,11 +13,15 @@
     <button id="paper-button">Paper</button>
     <button id="scissors-button">Scissors</button>
 
-    <div id="messages">
+    <div id="round">
 
     </div>
 
     <div id="score">
+
+    </div>
+
+    <div id="game">
 
     </div>
 
@@ -42,7 +46,7 @@
 
     function playRound(computerChoice, humanChoice) {
         if (humanChoice === computerChoice) {
-            const tieMessage = "It's a tie"
+            const tieMessage = "It's a tie";
             displayRoundMessage(tieMessage);
         } else if (
             humanChoice === "rock" && computerChoice === "scissors" ||
@@ -53,63 +57,74 @@
             displayRoundMessage(winningMessage);
             humanScore++;
         } else {
-            const loserMessage = "The computer wins the round!"
+            const loserMessage = "The computer wins the round!";
             displayRoundMessage(loserMessage);
             computerScore++;
         }
     }
 
     function playGame(humanSelection) {
-        cleanMessages();
+        cleanRound();
+        cleanScore();
         let computerSelection = "";
         computerSelection = getComputerChoice();
-
         playRound(computerSelection, humanSelection);
+        displayScore(humanScore, computerScore);
 
-        displayGameMessage((humanScore > computerScore) ? "You win the game" : "You lost the game");
+        // displayGameMessage((humanScore > computerScore) ? "You win the game" : "You lost the game");
     }
 
     function displayGameMessage(message) {
-        const messages = document.querySelector("#messages");
+        const messages = document.querySelector("#game");
         const gameMessage = document.createElement("h2");
         gameMessage.textContent = message;
         messages.appendChild(gameMessage);
     }
 
     function displayRoundMessage(message) {
-        const messages = document.querySelector("#messages");
+        const messages = document.querySelector("#round");
         const roundMessages = document.createElement("h3");
         roundMessages.textContent = message;
         messages.appendChild(roundMessages);
     }
 
-    function cleanMessages() {
-        const messages = document.querySelector("#messages");
+    function cleanRound() {
+        const messages = document.querySelector("#round");
         messages.textContent = "";
     }
 
-    function displayScore(computerScore, humanScore) {
-        
+    function displayScore(humanScore, computerScore) {
+        const score = document.querySelector("#score");
+        const humanResult = document.createElement("p");
+        const computerResult = document.createElement("p");
+        humanResult.textContent = `The player's score is: ${humanScore}`;
+        computerResult.textContent = `The computer's score is: ${computerScore}`;
+        score.appendChild(humanResult);
+        score.appendChild(computerResult);
     }
 
-    const rockButton = document.querySelector("#rock-button")
-    const paperButton = document.querySelector("#paper-button")
-    const scissorsButton = document.querySelector("#scissors-button")
+    function cleanScore() {
+        const score = document.querySelector("#score");
+        score.textContent = "";
+    }
+
+    const rockButton = document.querySelector("#rock-button");
+    const paperButton = document.querySelector("#paper-button");
+    const scissorsButton = document.querySelector("#scissors-button");
 
     let computerScore = 0;
     let humanScore = 0;
 
     rockButton.addEventListener("click", () => {
-        playGame("rock")
+        playGame("rock");
     })
 
     paperButton.addEventListener("click", () => {
-        playGame("paper")
-
+        playGame("paper");
     })
 
     scissorsButton.addEventListener("click", () => {
-        playGame("scissors")
+        playGame("scissors");
     })
 
 </script>
