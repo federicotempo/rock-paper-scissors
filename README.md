@@ -7,5 +7,7 @@ This game was created for playing entirely in the console.
 
 I only used a blank HTML document with a script tag to solve the problem.
 
+Live preview: https://federicotempo.github.io/rock-paper-scissors/
+
 # 16/10/2024 Update: 
 The game now has a user interface for playing, it is no longer played in the console as in the original version.
